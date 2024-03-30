@@ -67,12 +67,16 @@ app.get("/events/find", async (req, res) => {
       .sort({ date: 1 });
       let ans=[];
       let output={};
-      let event1=[];
+      let event1={};
       let page=1;
         for(const event of events){
             const distance=await calculateDistance(latitude,longitude,event.latitude,event.longitude);
             if(distance<20830){
-                event1.push(event);
+                event1["event_name"]=event.name;
+            event1["city_name"]= event.city;
+            event1["date"]= event.date;
+            event1["weather"]= "jo";
+            event1["distance_km"]=distance;
                 if(event1.length>=10){
                     // console.log(event1);
                     output["events"]=[...event1];
