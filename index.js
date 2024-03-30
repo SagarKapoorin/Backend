@@ -18,7 +18,7 @@ app.use(cors());
 
 async function fetchData() {
   try {
-    const response = await fetch('https://script.google.com/macros/s/AKfycbwJyhrZgLuTXLq5A7lnzIxMMK8fHVngiRYiClA-0A_GNK5vNOvSjWpMh0aHOiozCS2rFw/exec');
+    const response = await fetch(process.env.SCRIPT_URL);
     const data = await response.json();
     return data;
   } catch (error) {
@@ -38,7 +38,7 @@ app.get("/", async (req, res) => {
 
 async function calculateDistance(latitude1, longitude1, latitude2, longitude2) {
     try {
-      const response = await fetch(`https://gg-backend-assignment.azurewebsites.net/api/Distance?code=IAKvV2EvJa6Z6dEIUqqd7yGAu7IZ8gaH-a0QO6btjRc1AzFu8Y3IcQ==&latitude1=${latitude1}&longitude1=${longitude1}&latitude2=${latitude2}&longitude2=${longitude2}`);
+      const response = await fetch(`https://gg-backend-assignment.azurewebsites.net/api/Distance?code=${process.env.CODE}==&latitude1=${latitude1}&longitude1=${longitude1}&latitude2=${latitude2}&longitude2=${longitude2}`);
       const data = await response.json();
       return data.distance; 
     } catch (error) {
@@ -50,7 +50,7 @@ async function calculateDistance(latitude1, longitude1, latitude2, longitude2) {
   async function getWeather(city, date) {
     try {
         const encodedCity = encodeURIComponent(city);
-        const apiUrl = `https://gg-backend-assignment.azurewebsites.net/api/Weather?code=KfQnTWHJbg1giyB_Q9Ih3Xu3L9QOBDTuU5zwqVikZepCAzFut3rqsg==&city=${encodedCity}&date=${date}`;
+        const apiUrl = `https://gg-backend-assignment.azurewebsites.net/api/Weather?code=${process.env.CODEE}==&city=${encodedCity}&date=${date}`;
         const response = await fetch(apiUrl);
         if (!response.ok) {
             throw new Error(`Failed to fetch weather data: ${response.statusText}`);
