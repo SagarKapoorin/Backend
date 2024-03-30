@@ -47,10 +47,26 @@ async function calculateDistance(latitude1, longitude1, latitude2, longitude2) {
     }
   }
 
+  async function getWeather(city, date) {
+    try {
+        const encodedCity = encodeURIComponent(city);
+        const apiUrl = `https://gg-backend-assignment.azurewebsites.net/api/Weather?code=KfQnTWHJbg1giyB_Q9Ih3Xu3L9QOBDTuU5zwqVikZepCAzFut3rqsg==&city=${encodedCity}&date=${date}`;
+        const response = await fetch(apiUrl);
+        if (!response.ok) {
+            throw new Error(`Failed to fetch weather data: ${response.statusText}`);
+        }
+        const weatherData = await response.json();
+        return weatherData;
+    } catch (error) {
+        console.error('Error fetching weather data:', error);
+        throw error;
+    }
+}
+
 app.get("/events/find", async (req, res) => {
     try {
       const { latitude, longitude, date } = req.query;
- 
+      
       if (!latitude || !longitude || !date) {
         return res.status(400).json({ message: "Latitude, longitude, and date are required parameters." });
       }
@@ -67,16 +83,18 @@ app.get("/events/find", async (req, res) => {
       .sort({ date: 1 });
       let ans=[];
       let output={};
-      let event1={};
+      let event1=[];
       let page=1;
         for(const event of events){
             const distance=await calculateDistance(latitude,longitude,event.latitude,event.longitude);
             if(distance<20830){
-                event1["event_name"]=event.name;
-            event1["city_name"]= event.city;
-            event1["date"]= event.date;
-            event1["weather"]= "jo";
-            event1["distance_km"]=distance;
+              const k=await getWeather(event.city_name,event.date)
+                event1.push({ "event_name": `${event.event_name}`,
+                "city_name": `${event.city_name}`,
+                "date": `${event.date}`,
+                "weather": `${k.weather}`,
+                "distance_km": `${distance}`
+    });
                 if(event1.length>=10){
                     // console.log(event1);
                     output["events"]=[...event1];
