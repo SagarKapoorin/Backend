@@ -33,7 +33,9 @@ This is a Node.js based Event Management System which utilizes MongoDB, Express.
 
 ## Challenges
 1.Setting up data form CSV(SpreadSheet) to MongoDB.
+
 2.Sorting on bases of distance and date.
+
 3.modification of events or final response.
 
 ## How to Set Up
