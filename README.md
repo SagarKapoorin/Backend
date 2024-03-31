@@ -7,7 +7,7 @@ This is a Node.js based Event Management System which utilizes MongoDB, Express.
 
 ## Live Link and Working Video
 
-[Live Link-Might be Slow due to free hosting](https://backend-mnpk.onrender.com/events/find?latitude=40.7128&longitude=-74.0060&date=2024-03-15) 
+[Live Link](https://backend-mnpk.onrender.com/events/find?latitude=40.7128&longitude=-74.0060&date=2024-03-15) 
 
 [Working Video](https://drive.google.com/file/d/12AOKBe9p3d6tHzYuGg6zr-muFptiQJta/view?usp=sharing)
 
