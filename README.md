@@ -9,7 +9,7 @@ This is a Node.js based Event Management System which utilizes MongoDB, Express.
 
 [Live Link](insert_live_link_here)
 
-[Working Video](Video/demo.mp4)
+[Working Video](https://drive.google.com/file/d/12AOKBe9p3d6tHzYuGg6zr-muFptiQJta/view?usp=sharing)
 
 ## Tech Stack
 
