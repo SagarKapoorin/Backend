@@ -31,6 +31,11 @@ This is a Node.js based Event Management System which utilizes MongoDB, Express.
 5. Send the filtered events as a JSON response.
 6. Utilized multiple try-catch blocks for error handling.
 
+## Challenges
+1.Setting up data form CSV(SpreadSheet) to MongoDB.
+2.Sorting on bases of distance and date.
+3.modification of events or final response.
+
 ## How to Set Up
 
 1. Clone the repository:
@@ -48,7 +53,7 @@ This is a Node.js based Event Management System which utilizes MongoDB, Express.
    nodemon index.js
    ```
 
-4. Create an env file and add all required secrets. Note: Environment variables are not added to GitHub for security reasons.
+4. Create an 'env file' to '.env'. Note: Environment variables are  added to GitHub which is not good practice for security reasons but for your convenience i added them.
 
 5. Make a request to the endpoint using tools like Postman or hoopscotch.io:
    ```
